@@ -1,16 +1,13 @@
 # weather_app
 
-A new Flutter project.
+A Simple Weather Flutter application project using [Weather API](https://www.weatherapi.com/)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+After cloning the project, use **flutter pub get** to install dependenicies then run in your preferred IDE
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- API Integration using Dio
+- Error and Loading Handling
+- State Management using Getx
