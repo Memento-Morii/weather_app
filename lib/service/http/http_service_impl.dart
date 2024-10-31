@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:get/get.dart' as getx;
 
 import '/common/config/http_config.dart';
 import 'http_service.dart';
@@ -50,7 +49,7 @@ class HttpServiceImpl implements HttpService {
   @override
   Future<Response> getRequest(String urlPath, Map<String, dynamic> data) async {
     Response response;
-    const _extra = <String, dynamic>{};
+    const extra = <String, dynamic>{};
     final queryParameters = data;
     print(urlPath);
     try {
@@ -67,7 +66,7 @@ class HttpServiceImpl implements HttpService {
 
   @override
   void fireAndForgetGetRequest(String urlPath, Map<String, dynamic> data) {
-    const _extra = <String, dynamic>{};
+    const extra = <String, dynamic>{};
     final queryParameters = data;
     try {
       dio.get(
@@ -87,7 +86,7 @@ class HttpServiceImpl implements HttpService {
     Map<String, dynamic>? queryParams,
   ]) async {
     Response response;
-    const _extra = <String, dynamic>{};
+    const extra = <String, dynamic>{};
     try {
       if (latencySensitive) {
         dio.options.receiveTimeout =
@@ -113,7 +112,7 @@ class HttpServiceImpl implements HttpService {
 
   @override
   void fireAndForgetPostRequest(String urlPath, Map<String, dynamic> data) {
-    const _extra = <String, dynamic>{};
+    const extra = <String, dynamic>{};
     try {
       dio.post(
         urlPath,
