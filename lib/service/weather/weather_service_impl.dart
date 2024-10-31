@@ -17,7 +17,8 @@ class WeatherServiceImpl extends WeatherService {
           "key": "e06f576e1e734a3b83f115725243110",
         },
       );
-      return WeatherModel.fromJson(response.data);
+      WeatherModel weatherModel = WeatherModel.fromJson(response.data);
+      return weatherModel;
     } catch (e) {
       rethrow;
     }

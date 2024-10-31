@@ -10,13 +10,13 @@ extension SnackBarTextStyles on ResponseMessage {
   TextStyle? get displayTextStyles {
     switch (this) {
       case ResponseMessage.error:
-        return CustomTextTheme.errorWhiteText;
+        return CustomTextTheme.whiteText;
 
       case ResponseMessage.warning:
         return CustomTextTheme.warningTextStyle;
 
       case ResponseMessage.success:
-        return CustomTextTheme.errorWhiteText;
+        return CustomTextTheme.whiteText;
         {}
 
       default:

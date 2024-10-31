@@ -25,6 +25,7 @@ class TemperatureInfo {
 class Condition {
   @JsonKey(name: "text")
   final String? name;
+  @JsonKey(name: "icon")
   final String? imageUrl;
   Condition({
     this.name,

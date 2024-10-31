@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app/data/error_model/error_model.dart';
 import 'package:weather_app/data/weather_model/weather_model.dart';
 import 'package:weather_app/service/weather/weather_service.dart';
 import 'package:weather_app/service/weather/weather_service_impl.dart';
@@ -11,7 +14,8 @@ import '../../../service/dio_exceptions.dart';
 class HomeController extends GetxController {
   WeatherService weatherService = Get.find<WeatherServiceImpl>();
   late TextEditingController searchController;
-  WeatherModel? weather;
+  final isLoading = false.obs;
+  Rx<WeatherModel?> weather = Rx<WeatherModel?>(null);
 
   @override
   void onInit() {
@@ -20,14 +24,25 @@ class HomeController extends GetxController {
   }
 
   void searchWeather() async {
+    if (searchController.text.isEmpty) {
+      return;
+    }
+    isLoading(true);
     try {
-      weather = await weatherService.getWeatherInfo(
+      final response = await weatherService.getWeatherInfo(
         query: searchController.text.trim(),
       );
+      weather.value = response;
     } on DioException catch (e) {
-      final errorMessage = DioExceptions.fromDioError(e);
+      final errResponse = ErrorModel.fromJson(e.response!.data["error"]);
+      DialogHelpers.getInstance()!.showSnackBarGetx(
+          errResponse.message ?? "Something Went Wrong", ResponseMessage.error);
+    } catch (e) {
+      inspect(e);
       DialogHelpers.getInstance()!
-          .showSnackBarGetx(errorMessage.message, ResponseMessage.error);
+          .showSnackBarGetx("Something Went Wtong", ResponseMessage.error);
+    } finally {
+      isLoading(false);
     }
   }
 }

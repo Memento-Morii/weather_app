@@ -22,10 +22,10 @@ Map<String, dynamic> _$TemperatureInfoToJson(TemperatureInfo instance) =>
 
 Condition _$ConditionFromJson(Map<String, dynamic> json) => Condition(
       name: json['text'] as String?,
-      imageUrl: json['imageUrl'] as String?,
+      imageUrl: json['icon'] as String?,
     );
 
 Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
       'text': instance.name,
-      'imageUrl': instance.imageUrl,
+      'icon': instance.imageUrl,
     };

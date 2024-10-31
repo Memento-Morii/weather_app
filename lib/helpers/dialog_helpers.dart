@@ -32,7 +32,7 @@ class DialogHelpers {
         content,
         style: responseMessage.displayTextStyles,
       ),
-      duration: const Duration(seconds: 15),
+      duration: const Duration(seconds: 3),
       titleText: Container(),
       margin: const EdgeInsets.only(
           bottom: kBottomNavigationBarHeight, left: 8, right: 8),
